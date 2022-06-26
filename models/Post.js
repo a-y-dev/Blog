@@ -5,7 +5,7 @@ const PostSchema = new Schema({
   title: String,
   detail: String,
   dateCreated: {
-    type: date,
+    type: Date,
     default: Date.now
   }
 });
