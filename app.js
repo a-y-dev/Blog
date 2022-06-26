@@ -1,8 +1,20 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
+const Post = require('./models/Post');
 
-app.use(express.static('public'));
+//Connect DB
+mongoose.connect('mongodb://localhost/blog-db', {
+  
+});
+
+//Template Engine
 app.set("view engine", "ejs");
+
+//MIDDLEWARES
+app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 app.get("/" , (req,res) => {
   res.render("index");
@@ -18,6 +30,11 @@ app.get('/add', (req, res) => {
 
 app.get('/post', (req, res) => {
   res.render('post');
+});
+
+app.post('/blog-posts', async (req, res) => {
+  await Post.create(req.body);
+  res.redirect('/');
 });
 
 const port = 5000;
