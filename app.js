@@ -40,6 +40,13 @@ app.post('/blog-posts', async (req, res) => {
   res.redirect('/');
 });
 
+app.get('/posts/:id', async (req, res) => {
+  const post = await Post.findById(req.params.id);
+  res.render('post', {
+    post
+  });
+});
+
 const port = 5000;
 
 
