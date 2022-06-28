@@ -23,8 +23,12 @@
   <article>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-lg-8 col-md-10 mt-2">
           <%= post.detail %> 
+        </div>
+        <div class="col-lg-4 col-md-2">
+          <a href="/edit/<%= post._id %>" class="btn btn-primary">Update</a>
+          <a href="/delete-post/<%= post._id %>?_method=DELETE" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
         </div>
       </div>
     </div>
